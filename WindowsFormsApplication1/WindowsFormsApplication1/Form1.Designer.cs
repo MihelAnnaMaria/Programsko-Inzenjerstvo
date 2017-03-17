@@ -31,12 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.MenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuPanel
             // 
             resources.ApplyResources(this.MenuPanel, "MenuPanel");
             this.MenuPanel.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.MenuPanel.Controls.Add(this.button1);
             this.MenuPanel.Name = "MenuPanel";
             // 
             // ExitButton
@@ -48,6 +51,12 @@
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.UseVisualStyleBackColor = false;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Window
             // 
@@ -65,6 +74,7 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Window_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Window_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Window_MouseUp);
+            this.MenuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -73,6 +83,7 @@
 
         private System.Windows.Forms.Panel MenuPanel;
         private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button button1;
     }
 }
 
