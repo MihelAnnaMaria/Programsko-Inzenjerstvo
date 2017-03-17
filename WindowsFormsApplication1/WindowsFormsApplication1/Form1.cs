@@ -8,12 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace WindowsFormsApplication1
 {
     public partial class Window : Form
     {
-        private bool mouseDown;
-        private Point lastLocation;
+        Connection db_connection = new Connection();
+
+        private bool                    mouseDown;
+        private Point                   lastLocation;
+          
 
         public Window()
         {
@@ -23,6 +27,10 @@ namespace WindowsFormsApplication1
         private void Window_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+
+            //Inicijalizacija baze i spajanje
+            db_connection.Initialize();
+            db_connection.Connect();
         }
 
         private void ExitButton_Click(object sender, EventArgs e)

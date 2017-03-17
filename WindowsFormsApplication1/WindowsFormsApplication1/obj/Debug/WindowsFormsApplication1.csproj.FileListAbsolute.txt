@@ -13,3 +13,14 @@ C:\Users\marko\OneDrive\Documents\Visual Studio 2015\Projects\WindowsFormsApplic
 C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
 C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\hr-HR\WindowsFormsApplication1.resources.dll
+C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Window.resources
+C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Window.hr-HR.resources
+C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\hr-HR\WindowsFormsApplication1.resources.dll
+C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\System.Data.SQLite.dll
+C:\Users\marko\OneDrive\Documents\GitHub\Programsko-Inzenjerstvo\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\System.Data.SQLite.xml
