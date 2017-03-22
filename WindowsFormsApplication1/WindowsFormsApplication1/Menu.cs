@@ -13,9 +13,12 @@ namespace WindowsFormsApplication1
 {
     public partial class Window : Form
     {
-        Database    database        = new Database();
-        Tables      tables          = new Tables();
+        Companies_Insert    m_companies_Insert  = new Companies_Insert();
+        Database            m_database          = new Database();
+        Tables              m_tables            = new Tables();
+        DataTable           m_datatable         = new DataTable();
 
+        private String                  sql;
         private bool                    mouseDown;
         private Point                   lastLocation;
           
@@ -28,16 +31,18 @@ namespace WindowsFormsApplication1
 
         private void Window_Load(object sender, EventArgs e)
         {
-            // Ukljanja border, dakle nema one trake sa minimize, maximize i exit
+            // Uklanja border, dakle nema one trake sa minimize, maximize i exit
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 
-            //Inicijalizacija baze i spajanje
-            database.Initialize();
-            database.Connect();
+            // Inicijalizacija baze i spajanje
+            m_database.Initialize();
+            m_database.Connect();
 
-            //Inicijalizacija tablica
-            tables.Initialize_Tables(database);
+            // Inicijalizacija tablica
+            m_tables.Initialize_Tables(m_database);
 
+            // Popunjava listu firmi pri prvom pokretanju programa
+            Update_List();
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -69,6 +74,27 @@ namespace WindowsFormsApplication1
         {
             // Bez ovoga bi zauvijek micali prozor po ekranu
             mouseDown = false;
+        }
+
+        private void Dodaj_Novog_Click(object sender, EventArgs e)
+        {
+            // Otvara novi prozor kao modal, Companies_Insert.cs
+            m_companies_Insert.ShowDialog();
+
+            // Kad se zatvori update-a listu firmi
+            Update_List();
+        }
+
+        public void Update_List()
+        {
+            // Sql za odabiranje svih firmi iz baze, poziva metodu iz database.cs i popunjava datatable
+            sql = "SELECT * FROM Companies;";
+            m_datatable = m_database.Get_Data(sql);
+
+            // Listboxu kao source podataka daje datatable, ono sto vidimo = name, a kao vrijednost dobijemo ID
+            Firme_Lista.DataSource = m_datatable;
+            Firme_Lista.DisplayMember = "name";
+            Firme_Lista.ValueMember = "ID";
         }
     }
 }

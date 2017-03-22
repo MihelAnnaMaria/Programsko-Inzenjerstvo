@@ -4,21 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 //Za bazu podataka, konekcija, dodano u References
 using System.Data.SQLite;
 
-//MessageBox
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
     class Database
     {
-        SQLiteCommand command = new SQLiteCommand();
-
-        string                      fileName;
-        string                      connectionString;
+        SQLiteCommand command       = new SQLiteCommand();
+        
+        String                      fileName;
+        String                      connectionString;
         object                      exists;
         SQLiteConnection            m_dbConnection;
         
@@ -52,14 +52,42 @@ namespace WindowsFormsApplication1
             command.CommandText     = "SELECT name FROM sqlite_master WHERE type='table' AND name='" + tableName + "';";
 
             exists = command.ExecuteScalar();
-
+          
             // Ako postoji tablica exists ce biti ime tablice dakle razlicit od null
             if (exists == null)
             {
                 // Kreira tablicu
                 command.CommandText = "CREATE TABLE " + tableName + definicija;
                 command.ExecuteNonQuery();
+                
             }
+        }
+
+        public DataTable Get_Data(String sql)
+        {
+            // Lokalna datatable
+            DataTable dt = new DataTable();
+
+            try
+            {
+                // Komandi dajemo konekciju na bazu i sql-komandu koju zelimo izvrsiti nad njom
+                command.Connection      = m_dbConnection;
+                command.CommandText     = sql;
+
+                // Reader "cita" tablicu u bazi
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                // Load funckija datatable-a ucitava podatke iz readera, bez AcceptChanges nece nista ucitati osim imena stupaca i imena tablice
+                dt.Load(reader);
+                dt.AcceptChanges();
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            // Vraca vrijednost tablice
+            return dt;
         }
     }
 }

@@ -12,19 +12,16 @@ namespace WindowsFormsApplication1
         string[] sql = new String[]
         {
             "Companies",
-            "(ID INT NOT NULL PRIMARY KEY, name VARCHAR(100) NOT NULL, OIB INT NOT NULL, adresa VARCHAR(100) NOT NULL);"
+            "(ID INT NOT NULL PRIMARY KEY, name VARCHAR(100) NOT NULL, OIB INT NOT NULL, adresa VARCHAR(100) NOT NULL);",
         };
 
 
         public void Initialize_Tables(Database database)
         {
             // Prolazi kroz polje i poziva funkciju iz Database.cs za kreiranje tablica
-            for(int i = 0; i < sql.Length; i++)
+            for(int i = 0; i < sql.Length; i+=2)
             {
                 database.Create_Table(sql[i], sql[i+1]);
-
-                // Iz nekog razloga neda "i+2" u for()
-                i++;
             }
         }
     }
