@@ -15,11 +15,11 @@ namespace WindowsFormsApplication1
 {
     class Database
     {
-        SQLiteCommand command       = new SQLiteCommand();
+        SQLiteCommand m_command = new SQLiteCommand();
         
         String                      fileName;
         String                      connectionString;
-        object                      exists;
+        object                      value;
         SQLiteConnection            m_dbConnection;
         
 
@@ -48,17 +48,17 @@ namespace WindowsFormsApplication1
         public void Create_Table(String tableName, String definicija)
         {
             // SQL komanda s kojom vidimo jel postoji tablica u bazi
-            command.Connection      = m_dbConnection;
-            command.CommandText     = "SELECT name FROM sqlite_master WHERE type='table' AND name='" + tableName + "';";
+            m_command.Connection      = m_dbConnection;
+            m_command.CommandText     = "SELECT name FROM sqlite_master WHERE type='table' AND name='" + tableName + "';";
 
-            exists = command.ExecuteScalar();
+            value = m_command.ExecuteScalar();
           
             // Ako postoji tablica exists ce biti ime tablice dakle razlicit od null
-            if (exists == null)
+            if (value == null)
             {
                 // Kreira tablicu
-                command.CommandText = "CREATE TABLE " + tableName + definicija;
-                command.ExecuteNonQuery();
+                m_command.CommandText = "CREATE TABLE " + tableName + definicija;
+                m_command.ExecuteNonQuery();
                 
             }
         }
@@ -71,11 +71,11 @@ namespace WindowsFormsApplication1
             try
             {
                 // Komandi dajemo konekciju na bazu i sql-komandu koju zelimo izvrsiti nad njom
-                command.Connection      = m_dbConnection;
-                command.CommandText     = sql;
+                m_command.Connection      = m_dbConnection;
+                m_command.CommandText     = sql;
 
                 // Reader "cita" tablicu u bazi
-                SQLiteDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = m_command.ExecuteReader();
 
                 // Load funckija datatable-a ucitava podatke iz readera, bez AcceptChanges nece nista ucitati osim imena stupaca i imena tablice
                 dt.Load(reader);
@@ -88,6 +88,46 @@ namespace WindowsFormsApplication1
 
             // Vraca vrijednost tablice
             return dt;
+        }
+
+        public string Get_Single_Data(String sql)
+        {
+            // Komandi dajemo konekciju na bazu i sql-komandu koju zelimo izvrsiti nad njom
+            m_command.Connection      = m_dbConnection;
+            m_command.CommandText     = sql;
+
+            value = m_command.ExecuteScalar();
+
+            if(value.ToString() != "")
+            {
+                return value.ToString();
+            }
+            
+            return "100";
+        }
+
+        public bool Insert_Base(String tableName, Dictionary<String, String> data)
+        {
+            String columns = "";
+            String values = "";
+            Boolean returnCode = true;
+            foreach (KeyValuePair<String, String> val in data)
+            {
+                columns += String.Format(" {0},", val.Key.ToString());
+                values += String.Format(" '{0}',", val.Value);
+            }
+            columns = columns.Substring(0, columns.Length - 1);
+            values = values.Substring(0, values.Length - 1);
+            try
+            {
+                m_command.CommandText = String.Format("insert into {0}({1}) values({2});", tableName, columns, values);
+                m_command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                returnCode = false;
+            }
+            return returnCode;
         }
     }
 }

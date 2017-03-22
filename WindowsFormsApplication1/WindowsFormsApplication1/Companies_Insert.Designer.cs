@@ -89,6 +89,7 @@
             this.Ime_Firme.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Ime_Firme.Font = new System.Drawing.Font("High Tower Text", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Ime_Firme.Location = new System.Drawing.Point(423, 107);
+            this.Ime_Firme.MaxLength = 100;
             this.Ime_Firme.Name = "Ime_Firme";
             this.Ime_Firme.Size = new System.Drawing.Size(626, 31);
             this.Ime_Firme.TabIndex = 2;
@@ -129,12 +130,14 @@
             this.OIB_Label.TabIndex = 0;
             this.OIB_Label.Text = "OIB:";
             this.OIB_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.OIB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OIB_KeyPress);
             // 
             // OIB
             // 
             this.Companies_Insert_Table.SetColumnSpan(this.OIB, 10);
             this.OIB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OIB.Location = new System.Drawing.Point(108, 159);
+            this.OIB.MaxLength = 11;
             this.OIB.Name = "OIB";
             this.OIB.Size = new System.Drawing.Size(204, 31);
             this.OIB.TabIndex = 3;
@@ -157,6 +160,7 @@
             this.Companies_Insert_Table.SetColumnSpan(this.Adresa, 28);
             this.Adresa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Adresa.Location = new System.Drawing.Point(465, 159);
+            this.Adresa.MaxLength = 100;
             this.Adresa.Name = "Adresa";
             this.Adresa.Size = new System.Drawing.Size(584, 31);
             this.Adresa.TabIndex = 4;

@@ -85,7 +85,7 @@ namespace WindowsFormsApplication1
             Update_List();
         }
 
-        public void Update_List()
+        private void Update_List()
         {
             // Sql za odabiranje svih firmi iz baze, poziva metodu iz database.cs i popunjava datatable
             sql = "SELECT * FROM Companies;";
